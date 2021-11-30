@@ -46,7 +46,7 @@ def index(request):
         "form": NewEntryForm()
         })
 
-def EntryPage(request, title):
+def entryPage(request, title):
     entries=util.list_entries()
     if title in entries:
         page=util.get_entry(title)
@@ -97,7 +97,7 @@ def edit(request, title):
             util.save_entry(title, content)
             page=util.get_entry(title)
             page_mark=Markdown().convert(page)
-            return render(request, 'encyclopedia/EntryPage.html', {
+            return render(request, 'encyclopedia/entryPage.html', {
             "form": Article(),
             "title": title,
             "page": page_mark
