@@ -6,7 +6,7 @@ New Page
 
 {% block body %}
     <h1>New Page:</h1>
-        <form method="POST" action="{% url 'newPage' %}">
+        <form method="POST" action="{% url 'newpage' %}">
         {% csrf_token %}
         <h2 class="new_p">Create new page:</h2>
         <h3 class="title">Title:</h3>

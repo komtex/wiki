@@ -25,7 +25,7 @@ def index(request):
                 if article.casefold() == entry.casefold():
                     page = util.get_entry(article)
                     page_mark = Markdown().convert(page)
-                    return render(request, "encyclopedia/entryPage.html", {
+                    return render(request, "encyclopedia/entrypage.html", {
                         'page': page_mark,
                         'title': article,
                         'form': NewEntryForm()
@@ -46,12 +46,12 @@ def index(request):
         "form": NewEntryForm()
         })
 
-def entryPage(request, title):
+def entrypage(request, title):
     entries=util.list_entries()
     if title in entries:
         page=util.get_entry(title)
         page_mark=Markdown().convert(page)
-        return render(request, "encyclopedia/entryPage.html", {
+        return render(request, "encyclopedia/entrypage.html", {
             'page': page_mark,
             'title': title,
             'form': NewEntryForm()
@@ -78,13 +78,13 @@ def new(request):
                 util.save_entry(title, content)
                 page=util.get_entry(title)
                 page_mark=Markdown().convert(page)
-                return render(request, "encyclopedia/entryPage.html", {
+                return render(request, "encyclopedia/entrypage.html", {
                     "form": form,
                     "title": title,
                     "page": page_mark
                 })
     else:
-        return render(request, "encyclopedia/newPage.html", {
+        return render(request, "encyclopedia/newpage.html", {
             "form": Article()
             })
 
@@ -97,7 +97,7 @@ def edit(request, title):
             util.save_entry(title, content)
             page=util.get_entry(title)
             page_mark=Markdown().convert(page)
-            return render(request, 'encyclopedia/entryPage.html', {
+            return render(request, 'encyclopedia/entrypage.html', {
             "form": Article(),
             "title": title,
             "page": page_mark
